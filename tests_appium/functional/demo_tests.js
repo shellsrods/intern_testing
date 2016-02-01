@@ -3,6 +3,7 @@ define(function(require){
 	var registerSuite = require('intern!object');
     var LoginPage = require('../support/pages/LoginPage');
     var InterviewsPage = require('../support/pages/InterviewsPage');
+    var ExcelUtility = require('../support/ExcelUtility.js');
     var loginPage;
     var interviewsPage;
 
@@ -12,22 +13,23 @@ define(function(require){
 			console.log("Setup called...");
             loginPage = new LoginPage(this.remote);
             interviewsPage = new InterviewsPage(this.remote);
+            excelUtility = new ExcelUtility();
         },
 		teardown: function () {
 			console.log("Teardown called..");
         },
         'Login_positive': function () {
-            this.async(120000);
-            //return loginPage.login('spurohit@chenoainc.com', 'password#2')
-            return loginPage.login('spatil@chenoainc.com', 'password#1')
+            this.async(60000);
+            
+            return loginPage.login(excelUtility.readValue('A')[0], excelUtility.readValue('B')[0])
                   .then(function (loggedIn) {
                         assert.isTrue(loggedIn,
                                       'Valid username and password should log in successfully');
                         });
-        },
+        }/*,
         'Login_negative': function () {
-            this.async(120000);
-            return loginPage.login('spatil@chenoa.com', 'password#1')
+            this.async(60000);
+            return loginPage.login('wronguserid@chenoainc.com', excelUtility.readValue('B')[0])
                   .then(function (loggedIn) {
                         assert.isFalse(loggedIn,
                                       'Valid username and password should log in successfully');
@@ -37,10 +39,10 @@ define(function(require){
 		'Interviewee': function () {
             console.log("Called Interviewee function...");
             this.async(180000);
-            return interviewsPage.saveExit('spatil@chenoainc.com', 'password#1')
+            return interviewsPage.saveExit(excelUtility.readValue('A')[0], excelUtility.readValue('B')[0])
                   .then(function(text){
                             assert.strictEqual(text, "name-name test-test", "Text should be displayed when the form is submitted");
                         });
-		}
+		}*/
 	});
 });

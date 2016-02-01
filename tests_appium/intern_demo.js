@@ -66,7 +66,7 @@ define({
 	// Functional test suite(s) to execute against each browser once non-functional tests are completed
 	functionalSuites: [ /*'tests/functional/index_sheldon' 'myPackage/tests/functional' */ 'tests/functional/demo_tests' ],
 
-       reporters: [ {id:'Pretty'},
+       reporters: [ /*{id:'Pretty'},*/
                    {id:'JUnit', filename:'/Users/admin/jenkins_node/workspace/report.xml'}
                    ],
        /*reporters: [

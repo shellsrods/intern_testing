@@ -50,7 +50,7 @@ define(function (require) {
        .findByXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]").tap().end()
        
        //Save and Exit
-       //.findByName("Welcome sona purohit").tap().end()
+       
        .findByXpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]").tap().end()
        .findByName("Save & Exit").tap().end()
        
@@ -58,7 +58,7 @@ define(function (require) {
        .findByName("name-name test-test").getVisibleText()
        .then(function (text) {
                 //logout
-                //self.findByName("Welcome sona purohit").tap().end();
+             
                 self.findByXpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]").tap().end();
                 self.findByName("Logout").tap().end();
                 self.setFindTimeout(10000);
